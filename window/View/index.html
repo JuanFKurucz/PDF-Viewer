@@ -2,15 +2,22 @@
 <html>
   <head>
     <title>PDF Viewer</title>
+    <script src="js/script.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
   </head>
-  <body>
-    <webview id="pdf" src="pdf.pdf" style="float:right;position:fixed;top:0px;right:0px;width:75%;height:100%;" plugins></webview>
+  <body onload="init()">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-4">
+          <h1>PDF Viewer<h1>
+          <hr />
+          <ul style="font-size:21px;" id="pdfList">
+          </ul>
+        </div>
+        <div class="col-sm-8">
+          <webview id="pdf" src="" style="height:100%;" plugins></webview>
+        </div>
+      </div>
+    </div>
   </body>
-  <script>
-  const {ipcRenderer} = require('electron')
-  ipcRenderer.on('path', (event, arg) => {
-    document.getElementById("pdf").src=arg+"/Library/pdf.pdf";
-  })
-  ipcRenderer.send('loaded')
-  </script>
-<html>
+</html>
