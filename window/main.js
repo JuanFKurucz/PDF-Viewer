@@ -1,6 +1,6 @@
 const {BrowserWindow} = require("electron");
 
-exports.init = function(){
+exports.init = () => {
   let mainWindow = new BrowserWindow();
   mainWindow.loadURL(__dirname+"/View/index.html");
   mainWindow.on("close", () => {
