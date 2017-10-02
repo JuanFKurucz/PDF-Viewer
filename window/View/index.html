@@ -1,9 +1,16 @@
 <!DOCTYPE HTML>
 <html>
   <head>
-    <title>PDF Viewer</title> 
+    <title>PDF Viewer</title>
   </head>
   <body>
-    <webview src="pdf.pdf" style="float:right;position:fixed;top:0px;right:0px;width:75%;height:100%;" plugins></webview>
+    <webview id="pdf" src="pdf.pdf" style="float:right;position:fixed;top:0px;right:0px;width:75%;height:100%;" plugins></webview>
   </body>
+  <script>
+  const {ipcRenderer} = require('electron')
+  ipcRenderer.on('path', (event, arg) => {
+    document.getElementById("pdf").src=arg+"/Library/pdf.pdf";
+  })
+  ipcRenderer.send('loaded')
+  </script>
 <html>
