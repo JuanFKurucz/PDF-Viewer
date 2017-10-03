@@ -1,5 +1,6 @@
 const {ipcRenderer} = require('electron');
 const {addNewPdfItem} = require(__dirname+"/js/menu.js");
+const {userNotes} = require(`${__dirname}/js/userNotes.js`);
 var appData;
 
 function init(){
@@ -12,6 +13,8 @@ function init(){
       addNewPdfItem(appData,list[element]);
     }
   })
-
+  document.getElementById('saveUserNotes').onclick= function(){
+    userNotes(appData);
+  }
   ipcRenderer.send('askPdfList')
 }
