@@ -10,14 +10,33 @@ function pdfActive(){
   return false;
 }
 
-exports.userNotes= (appdata)=>{
+exports.userNotes= (appData)=>{
   var resumen = document.getElementById('userNotes').value;
   var nombrePDF=pdfActive();
   console.log(document.getElementById('userNotes').value);
   if(nombrePDF != false){
-    fs.writeFile(appdata+nombrePDF+'.txt', resumen, (err)=>{
-      if(err) throw err;
+    writeSummary(appData+nombrePDF+'.txt', resumen);
       console.log('Your notes has been saved');
-    })
   }
+}
+
+exports.cargarResumen = function(appData){
+  var nombrePDF=pdfActive();
+  console.log(nombrePDF);
+  console.log(appData);
+  fs.readFile(appData+nombrePDF+'.txt',(err,data)=>{
+    if(err) {
+      writeSumamry(appData+nombrePDF+'.txt','');
+      document.getElementById('userNotes').value='';
+      // throw err;
+    }else{
+    document.getElementById('userNotes').value= data;
+  }
+  })
+}
+function writeSummary(path,content){
+  fs.writeFile(path, content, (err)=>{
+    if(err) throw err;
+    console.log('Your notes has been saved');
+  })
 }
