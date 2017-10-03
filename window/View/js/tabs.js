@@ -56,9 +56,9 @@ exports.addTab = function(appData,name){
       hideExcept(this.getAttribute("pdf"),appData);
     }
     document.getElementById("tabs").appendChild(divTab);
-    hideExcept(name);
+    hideExcept(name,appData);
   } else {
-    hideExcept(name);
+    hideExcept(name,appData);
   }
 }
 window.addEventListener('resize', function(event) {
