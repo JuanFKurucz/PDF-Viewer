@@ -26,7 +26,7 @@ exports.cargarResumen = function(appData){
   console.log(appData);
   fs.readFile(appData+nombrePDF+'.txt',(err,data)=>{
     if(err) {
-      writeSumamry(appData+nombrePDF+'.txt','');
+      writeSummary(appData+nombrePDF+'.txt','');
       document.getElementById('userNotes').value='';
       // throw err;
     }else{
