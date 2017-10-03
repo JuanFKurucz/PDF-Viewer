@@ -1,3 +1,4 @@
+const {cargarResumen} = require(`${__dirname}/js/userNotes.js`);
 
 function checkTabs(name){
   var tabDiv = document.getElementById("tabs");
@@ -52,6 +53,7 @@ exports.addTab = function(appData,name){
     divTab.setAttribute("pdf",name);
     divTab.onclick=function(){
       hideExcept(this.getAttribute("pdf"));
+      cargarResumen(appData);
     }
     document.getElementById("tabs").appendChild(divTab);
     hideExcept(name);
