@@ -1,4 +1,4 @@
-const {cargarResumen} = require(`${__dirname}/js/userNotes.js`);
+const {cargarResumen} = require(`${__dirname}/userNotes.js`);
 
 function checkTabs(name){
   var tabDiv = document.getElementById("tabs");
@@ -24,7 +24,7 @@ function activeTabs(name){
   }
 }
 
-function hideExcept(name){
+function hideExcept(name,appData){
   var contenedor=document.getElementsByClassName("col-sm-8")[0].getElementsByTagName("webview");
   for(var w=0;w<contenedor.length;w++){
     if(contenedor[w].getAttribute("pdf")!=name){
@@ -34,6 +34,7 @@ function hideExcept(name){
     }
   }
   activeTabs(name);
+  cargarResumen(appData);
 }
 
 exports.addTab = function(appData,name){
@@ -52,8 +53,7 @@ exports.addTab = function(appData,name){
     divTab.style="display:inline;"
     divTab.setAttribute("pdf",name);
     divTab.onclick=function(){
-      hideExcept(this.getAttribute("pdf"));
-      cargarResumen(appData);
+      hideExcept(this.getAttribute("pdf"),appData);
     }
     document.getElementById("tabs").appendChild(divTab);
     hideExcept(name);
