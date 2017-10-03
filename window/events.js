@@ -1,5 +1,5 @@
 const {ipcMain} = require('electron');
-const pdfs = require(__dirname+"/showFilesList.js");
+const {getPdfs} = require(__dirname+"/showFilesList.js");
 
 exports.init = function(appData){
   ipcMain.on('loaded', (event) => {
@@ -7,7 +7,7 @@ exports.init = function(appData){
   })
 
   ipcMain.on('askPdfList', (event) => {
-    pdfs.get(appData+"/Library",function(err,content){
+    getPdfs(appData+"/Library",function(err,content){
         event.sender.send('addPdfItems',content)
     });
   })
