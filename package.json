@@ -13,6 +13,7 @@
     "electron": "^1.7.8"
   },
   "dependencies": {
-    "electron": "^1.7.8"
+    "electron": "^1.7.8",
+    "fs": "0.0.1-security"
   }
 }

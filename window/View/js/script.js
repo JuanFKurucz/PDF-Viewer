@@ -5,7 +5,7 @@ function addNewPdfItem(name){
   var newLi = document.createElement("li");
   newLi.textContent=name;
   newLi.onclick=function(){
-    document.getElementById("pdf").src=appData+name+".pdf";
+    document.getElementById("pdf").src=appData+name;
   }
   newLi.style="cursor:pointer;"
   document.getElementById("pdfList").append(newLi);
@@ -20,7 +20,12 @@ function init(){
   window.addEventListener('resize', function(event) {
     document.getElementById("pdf").style.height=window.innerHeight+"px";
   });
-  ipcRenderer.on('addPdfItem', (event, name) => {
-    addNewPdfItem(name);
+  ipcRenderer.on('addPdfItems', (event, list) => {
+    console.log(list);
+    for(element in list){
+      addNewPdfItem(list[element]);
+    }
   })
+
+  ipcRenderer.send('askPdfList')
 }
