@@ -3,6 +3,7 @@
   <head>
     <title>PDF Viewer</title>
     <script src="js/script.js"></script>
+    <script type="text/javascript" src="js/userNotes.js"></script>
     <link rel="stylesheet" href="css/bootstrap.min.css">
   </head>
   <body onload="init()">
@@ -13,6 +14,11 @@
           <hr />
           <ul style="font-size:21px;" id="pdfList">
           </ul>
+          <div class="form-group">
+            <label for="Notes"><small>Your notes: </small></label>
+            <textarea class="form-control" id="userNotes" rows="8" cols="80"></textarea>
+            <button type="button" name="button" class="btn btn-success" id="saveUserNotes">Save</button>
+          </div>
         </div>
         <div class="col-sm-8">
           <webview id="pdf" src="" style="height:100%;" plugins></webview>
