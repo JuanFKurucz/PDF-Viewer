@@ -1,7 +1,5 @@
 const {ipcMain} = require('electron');
-const fs = require('fs');
 const pdfs = require(__dirname+"/showFilesList.js");
-
 
 exports.init = function(appData){
   ipcMain.on('loaded', (event) => {
