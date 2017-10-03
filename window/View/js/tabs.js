@@ -36,6 +36,9 @@ function hideExcept(name){
 }
 
 exports.addTab = function(appData,name){
+  if(document.getElementById("resumenArea").style.display=="none"){
+    document.getElementById("resumenArea").style.display="";
+  }
   if(checkTabs(name) == true){
     var webView = document.createElement("webview");
     webView.src=appData+name;
