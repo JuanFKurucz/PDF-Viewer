@@ -1,4 +1,5 @@
 var fs = require('fs');
+const {beautifulNotes} = require(__dirname+"/beautifulNotes.js");
 
 function pdfActive(){
   var contenedor=document.getElementsByClassName("col-sm-8")[0].getElementsByTagName("webview");
@@ -27,12 +28,13 @@ exports.cargarResumen = function(appData){
   fs.readFile(appData+nombrePDF+'.txt',(err,data)=>{
     if(err) {
       writeSummary(appData+nombrePDF+'.txt','');
-      document.getElementById('userNotes').value='';
       // throw err;
     }else{
-    document.getElementById('userNotes').value= data;
-  }
+     document.getElementById('notes').innerHTML=beautifulNotes(data);
+    }
   })
+  document.getElementById('userNotes').value='';
+  
 }
 function writeSummary(path,content){
   fs.writeFile(path, content, (err)=>{
