@@ -15,7 +15,7 @@ exports.exportPDF=function(path){
 }
 
 function getNumber(path){
-  fs.readFile(path,(err,data)=>{
+  fs.readFile(path+'.json',(err,data)=>{
     if(err) {
       throw err;
     }else{

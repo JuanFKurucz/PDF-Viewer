@@ -18,7 +18,7 @@ exports.userNotes= (appData)=>{
   var nombrePDF=pdfActive();
   console.log(document.getElementById('userNotes').value);
   if(nombrePDF != false){
-    writeSummary(appData+nombrePDF+'.txt', resumen);
+    writeSummary(appData+nombrePDF+'_Summary.json', resumen);
       console.log('Your notes has been saved');
   }
 }
@@ -27,12 +27,15 @@ exports.cargarResumen = function(appData){
   var nombrePDF=pdfActive();
   console.log(nombrePDF);
   console.log(appData);
-  fs.readFile(appData+nombrePDF+'.txt',(err,data)=>{
+  fs.readFile(appData+nombrePDF+'_Summary.json',(err,data)=>{
     if(err) {
-      writeSummary(appData+nombrePDF,'');
+      writeSummary(appData+nombrePDF+'_Summary.json','');
       // throw err;
     }else{
-     document.getElementById('notes').innerHTML=beautifulNotes(data);
+      var numeroTotalPaginas=getNumberPages(appData+nombrePDF);
+      var diccionario = JSON.parse(data);
+      var paginaActual=parseInt(information.documentCurrentHeight/(information.documenttotalHeight/numeroTotalPaginas))
+     document.getElementById('notes').innerHTML=beautifulNotes(diccionario[paginaActual]);
     }
   })
   document.getElementById('userNotes').value='';
@@ -46,14 +49,21 @@ exports.saveInformation = function(info){
   information=info;
 }
 
+function loadSummary(path){
+fs.readFile(path+'_Summary.json',(err,data)=>{
+  if(err) {
+    return {};
+  }else{
+   return data;
+  }
+})
+}
 function writeSummary(path,content){
   var numeroTotalPaginas=getNumberPages(path);
-  var diccionario=//cargar JSON.parse(texto archivo.json)
+  var diccionario = JSON.parse(loadSummary(path));
   var paginaActual=parseInt(information.documentCurrentHeight/(information.documenttotalHeight/numeroTotalPaginas))
-  // parseInt(alturaActual/(alturaMaxima/numeroTotalPaginas))
   diccionario[paginaActual]=data;
-  //content = JSON.stringyf(diccionario);
-  fs.writeFile(path, content, (err)=>{
+  fs.writeFile(path, JSON.stringify(content), (err)=>{
     if(err) throw err;
     console.log('Your notes has been saved');
   })
