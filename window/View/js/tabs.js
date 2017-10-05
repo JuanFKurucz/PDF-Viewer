@@ -1,4 +1,4 @@
-const {cargarResumen} = require(`${__dirname}/userNotes.js`);
+const {cargarResumen,saveInformation} = require(`${__dirname}/userNotes.js`);
 
 function checkTabs(name){
   var tabDiv = document.getElementById("tabs");
@@ -47,6 +47,11 @@ exports.addTab = function(appData,name){
     webView.setAttribute("plugins","true");
     webView.setAttribute("pdf",name);
     webView.setAttribute("preload","js/webview/script.js");
+    webView.addEventListener("ipc-message", function (e) {
+      if (webView.style.display!="none" && e.channel === "window-data") {
+        saveInformation(e.args[0]);
+      }
+    })
     webView.style.height=window.innerHeight+"px";
     document.getElementsByClassName("col-sm-8")[0].appendChild(webView);
 

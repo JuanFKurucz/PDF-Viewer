@@ -1,6 +1,8 @@
+const {ipcRenderer} = require('electron');
+const {getPdfPage} = require(__dirname+"/getPdfPage.js");
 
 window.onload=function(){
   document.body.onscroll = function(){
-    console.log("hola");
+    ipcRenderer.sendToHost("window-data", getPdfPage());
   };
 }

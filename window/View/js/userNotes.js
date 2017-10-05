@@ -38,11 +38,21 @@ exports.cargarResumen = function(appData){
   document.getElementById('userNotes').value='';
 
 }
+
+var information={'documenttotalHeight': 1, 'documentCurrentHeight':0 }
+
+
+exports.saveInformation = function(info){
+  information=info;
+}
+
 function writeSummary(path,content){
   var numeroTotalPaginas=getNumberPages(path);
-  var diccionario=//cargar JSON, y parsear
+  var diccionario=//cargar JSON.parse(texto archivo.json)
+  var paginaActual=parseInt(information.documentCurrentHeight/(information.documenttotalHeight/numeroTotalPaginas))
   // parseInt(alturaActual/(alturaMaxima/numeroTotalPaginas))
   diccionario[paginaActual]=data;
+  //content = JSON.stringyf(diccionario);
   fs.writeFile(path, content, (err)=>{
     if(err) throw err;
     console.log('Your notes has been saved');
