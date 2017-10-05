@@ -11,4 +11,7 @@ exports.init = function(appData){
         event.sender.send('addPdfItems',content)
     });
   })
+  ipcMain.on('userNotes', (event) => {
+    event.sender.send('addPdfItems',content)
+  })
 }

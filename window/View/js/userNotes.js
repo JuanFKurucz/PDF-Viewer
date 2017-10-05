@@ -1,5 +1,7 @@
 var fs = require('fs');
 const {beautifulNotes} = require(__dirname+"/beautifulNotes.js");
+const {getNumberPages} = require(__dirname+"/readPDF.js");
+
 
 function pdfActive(){
   var contenedor=document.getElementsByClassName("col-sm-8")[0].getElementsByTagName("webview");
@@ -27,16 +29,20 @@ exports.cargarResumen = function(appData){
   console.log(appData);
   fs.readFile(appData+nombrePDF+'.txt',(err,data)=>{
     if(err) {
-      writeSummary(appData+nombrePDF+'.txt','');
+      writeSummary(appData+nombrePDF,'');
       // throw err;
     }else{
      document.getElementById('notes').innerHTML=beautifulNotes(data);
     }
   })
   document.getElementById('userNotes').value='';
-  
+
 }
 function writeSummary(path,content){
+  var numeroTotalPaginas=getNumberPages(path);
+  var diccionario=//cargar JSON, y parsear
+  // parseInt(alturaActual/(alturaMaxima/numeroTotalPaginas))
+  diccionario[paginaActual]=data;
   fs.writeFile(path, content, (err)=>{
     if(err) throw err;
     console.log('Your notes has been saved');
