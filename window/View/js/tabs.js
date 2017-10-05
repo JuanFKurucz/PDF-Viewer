@@ -46,8 +46,11 @@ exports.addTab = function(appData,name){
     webView.src=appData+name;
     webView.setAttribute("plugins","true");
     webView.setAttribute("pdf",name);
+    webView.setAttribute("preload","js/webview/script.js");
     webView.style.height=window.innerHeight+"px";
     document.getElementsByClassName("col-sm-8")[0].appendChild(webView);
+
+
     var divTab = document.createElement("div");
     divTab.textContent="   "+name+"   ";
     divTab.style="display:inline;"
