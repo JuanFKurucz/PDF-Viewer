@@ -31,10 +31,10 @@ function hideExcept(name,appData){
       contenedor[w].style.display="none";
     } else {
       contenedor[w].style.display="";
+      document.getElementById("saveUserNotes").setAttribute("pdfActive",contenedor[w].getAttribute("pdf").substring(0,name.length-4))
     }
   }
   activeTabs(name);
-  cargarResumen(appData);
 }
 
 exports.addTab = function(appData,name){
@@ -54,7 +54,7 @@ exports.addTab = function(appData,name){
       if (webView.style.display!="none" && e.channel === "window-data") {
         saveInformation(e.args[0]);
       }
-      cargarResumen(appData);
+      cargarResumen(appData+name.substring(0,name.length-4));
     })
     webView.style.height=window.innerHeight+"px";
     document.getElementsByClassName("col-sm-8")[0].appendChild(webView);
