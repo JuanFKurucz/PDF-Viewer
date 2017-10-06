@@ -38,9 +38,7 @@ function hideExcept(name,appData){
 }
 
 exports.addTab = function(appData,name){
-
   ipcRenderer.send('exportPDFtoJSON',appData+name);
-
   if(document.getElementById("resumenArea").style.display=="none"){
     document.getElementById("resumenArea").style.display="";
   }
