@@ -1,6 +1,6 @@
 const {ipcMain} = require('electron');
 const {getPdfs} = require(__dirname+"/showFilesList.js");
-
+const {saveJson} = require(__dirname+"/exportPDFtoJson.js");
 exports.init = function(appData){
   ipcMain.on('loaded', (event) => {
     event.sender.send('path', appData);
@@ -11,7 +11,7 @@ exports.init = function(appData){
         event.sender.send('addPdfItems',content)
     });
   })
-  ipcMain.on('userNotes', (event) => {
-    event.sender.send('addPdfItems',content)
+  ipcMain.on('exportPDFtoJSON', (event,path) => {
+    saveJson(path)
   })
 }

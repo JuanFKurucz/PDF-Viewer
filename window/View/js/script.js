@@ -14,9 +14,8 @@ function init(){
     }
   })
   document.getElementById('saveUserNotes').onclick= function(){
-    ipcRenderer.send('userNotes')
-    //userNotes(appData);
+    userNotes(appData);
   }
-
+  
   ipcRenderer.send('askPdfList')
 }

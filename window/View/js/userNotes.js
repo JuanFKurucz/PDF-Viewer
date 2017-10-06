@@ -18,7 +18,7 @@ exports.userNotes= (appData)=>{
   var nombrePDF=pdfActive();
   console.log(document.getElementById('userNotes').value);
   if(nombrePDF != false){
-    writeSummary(appData+nombrePDF+'_Summary.json', resumen);
+    writeSummary(appData+nombrePDF+'_Summary', resumen);
       console.log('Your notes has been saved');
   }
 }
@@ -29,13 +29,14 @@ exports.cargarResumen = function(appData){
   console.log(appData);
   fs.readFile(appData+nombrePDF+'_Summary.json',(err,data)=>{
     if(err) {
-      writeSummary(appData+nombrePDF+'_Summary.json','');
+      writeSummary(appData+nombrePDF,'');
       // throw err;
     }else{
-      var numeroTotalPaginas=getNumberPages(appData+nombrePDF);
-      var diccionario = JSON.parse(data);
-      var paginaActual=parseInt(information.documentCurrentHeight/(information.documenttotalHeight/numeroTotalPaginas))
-     document.getElementById('notes').innerHTML=beautifulNotes(diccionario[paginaActual]);
+      getNumberPages(appData+nombrePDF,function(numeroTotalPaginas){
+        var diccionario = JSON.parse(data);
+        var paginaActual=parseInt(information.documentCurrentHeight/(information.documenttotalHeight/numeroTotalPaginas))
+       document.getElementById('notes').innerHTML=beautifulNotes(diccionario[paginaActual]);
+     })
     }
   })
   document.getElementById('userNotes').value='';
@@ -49,22 +50,38 @@ exports.saveInformation = function(info){
   information=info;
 }
 
-function loadSummary(path){
-fs.readFile(path+'_Summary.json',(err,data)=>{
-  if(err) {
-    return {};
-  }else{
-   return data;
-  }
-})
-}
-function writeSummary(path,content){
-  var numeroTotalPaginas=getNumberPages(path);
-  var diccionario = JSON.parse(loadSummary(path));
-  var paginaActual=parseInt(information.documentCurrentHeight/(information.documenttotalHeight/numeroTotalPaginas))
-  diccionario[paginaActual]=data;
-  fs.writeFile(path, JSON.stringify(content), (err)=>{
-    if(err) throw err;
-    console.log('Your notes has been saved');
+function loadSummary(path,callback){
+  var ndata={};
+  fs.readFile(path,(err,data)=>{
+    if(err) {}else{
+      ndata=JSON.parse(data);
+    }
+    callback(null,ndata)
   })
+}
+
+function writeToFile(path,text){
+  console.log(text)
+  fs.writeFile(path,text, (err)=>{
+    if(err) throw err;
+  })
+}
+
+function writeSummary(path,content){
+  var diccionario={};
+  console.log("writeSummary",path)
+  if(content!=''){
+    getNumberPages(path.replace("_Summary",""),function(e,numeroTotalPaginas){
+      loadSummary(path+'.json',function(e,data){
+        diccionario = data;
+        var paginaActual=parseInt(information.documentCurrentHeight/(information.documenttotalHeight/numeroTotalPaginas))
+        diccionario[paginaActual]=content;
+        console.log(diccionario);
+        writeToFile(path+'.json',JSON.stringify(diccionario));
+      });
+    });
+  } else {
+    writeToFile(path+'.json',JSON.stringify(diccionario));
+  }
+
 }

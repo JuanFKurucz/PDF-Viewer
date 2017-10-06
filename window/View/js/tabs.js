@@ -1,5 +1,5 @@
 const {cargarResumen,saveInformation} = require(`${__dirname}/userNotes.js`);
-
+const {ipcRenderer} = require('electron');
 function checkTabs(name){
   var tabDiv = document.getElementById("tabs");
   for(var d=0; d <tabDiv.getElementsByTagName("div").length; d++){
@@ -38,6 +38,9 @@ function hideExcept(name,appData){
 }
 
 exports.addTab = function(appData,name){
+
+  ipcRenderer.send('exportPDFtoJSON',appData+name);
+  
   if(document.getElementById("resumenArea").style.display=="none"){
     document.getElementById("resumenArea").style.display="";
   }
