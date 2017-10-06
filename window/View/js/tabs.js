@@ -40,7 +40,7 @@ function hideExcept(name,appData){
 exports.addTab = function(appData,name){
 
   ipcRenderer.send('exportPDFtoJSON',appData+name);
-  
+
   if(document.getElementById("resumenArea").style.display=="none"){
     document.getElementById("resumenArea").style.display="";
   }
@@ -54,6 +54,7 @@ exports.addTab = function(appData,name){
       if (webView.style.display!="none" && e.channel === "window-data") {
         saveInformation(e.args[0]);
       }
+      cargarResumen(appData);
     })
     webView.style.height=window.innerHeight+"px";
     document.getElementsByClassName("col-sm-8")[0].appendChild(webView);

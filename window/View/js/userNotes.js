@@ -16,34 +16,36 @@ function pdfActive(){
 exports.userNotes= (appData)=>{
   var resumen = document.getElementById('userNotes').value;
   var nombrePDF=pdfActive();
-  console.log(document.getElementById('userNotes').value);
+  //console.log(document.getElementById('userNotes').value);
   if(nombrePDF != false){
     writeSummary(appData+nombrePDF+'_Summary', resumen);
-      console.log('Your notes has been saved');
+      //console.log('Your notes has been saved');
   }
 }
 
+
+var information={'documenttotalHeight': 1, 'documentCurrentHeight':0 }
+
+
 exports.cargarResumen = function(appData){
   var nombrePDF=pdfActive();
-  console.log(nombrePDF);
-  console.log(appData);
+  //console.log(nombrePDF);
+  //console.log(appData);
   fs.readFile(appData+nombrePDF+'_Summary.json',(err,data)=>{
     if(err) {
       writeSummary(appData+nombrePDF,'');
       // throw err;
     }else{
-      getNumberPages(appData+nombrePDF,function(numeroTotalPaginas){
+      getNumberPages(appData+nombrePDF,function(err,numeroTotalPaginas){
         var diccionario = JSON.parse(data);
         var paginaActual=parseInt(information.documentCurrentHeight/(information.documenttotalHeight/numeroTotalPaginas))
        document.getElementById('notes').innerHTML=beautifulNotes(diccionario[paginaActual]);
-     })
+    })
     }
   })
   document.getElementById('userNotes').value='';
 
 }
-
-var information={'documenttotalHeight': 1, 'documentCurrentHeight':0 }
 
 
 exports.saveInformation = function(info){
@@ -61,7 +63,7 @@ function loadSummary(path,callback){
 }
 
 function writeToFile(path,text){
-  console.log(text)
+  //console.log(text)
   fs.writeFile(path,text, (err)=>{
     if(err) throw err;
   })
@@ -69,14 +71,14 @@ function writeToFile(path,text){
 
 function writeSummary(path,content){
   var diccionario={};
-  console.log("writeSummary",path)
+  //console.log("writeSummary",path)
   if(content!=''){
     getNumberPages(path.replace("_Summary",""),function(e,numeroTotalPaginas){
       loadSummary(path+'.json',function(e,data){
         diccionario = data;
         var paginaActual=parseInt(information.documentCurrentHeight/(information.documenttotalHeight/numeroTotalPaginas))
         diccionario[paginaActual]=content;
-        console.log(diccionario);
+        //console.log(diccionario);
         writeToFile(path+'.json',JSON.stringify(diccionario));
       });
     });
