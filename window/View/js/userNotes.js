@@ -24,11 +24,12 @@ function writeSummary(path,content){
   if(content!=''){
     getNumberPages(path.replace("_Summary",""),function(e,numeroTotalPaginas){
       loadSummary(path+'.json',function(e,data){
+        console.log(path);
         diccionario = data;
         var paginaActual=parseInt(information.documentCurrentHeight/(information.documenttotalHeight/numeroTotalPaginas))
         diccionario[paginaActual]=content;
         writeToFile(path+'.json',JSON.stringify(diccionario));
-        cargar_resumen(path);
+        cargar_resumen(path.replace("_Summary",""));
       });
     });
   } else {
