@@ -15,6 +15,7 @@ function init(){
   })
   document.getElementById('saveUserNotes').onclick= function(){
     userNotes(appData,this.getAttribute("pdfActive"));
+    document.getElementById("notes").value="";
   }
 
   ipcRenderer.send('askPdfList')
