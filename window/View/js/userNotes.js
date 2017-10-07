@@ -33,7 +33,7 @@ function writeSummary(path,content){
       });
     });
   } else {
-    writeToFile(path+'.json',JSON.stringify(diccionario));
+    //writeToFile(path+'.json',JSON.stringify(diccionario));
   }
 }
 
