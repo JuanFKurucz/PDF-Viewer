@@ -2,8 +2,8 @@ const {cargarResumen,saveInformation} = require(`${__dirname}/userNotes.js`);
 const {ipcRenderer} = require('electron');
 function checkTabs(name){
   var tabDiv = document.getElementById("tabs");
-  for(var d=0; d <tabDiv.getElementsByTagName("div").length; d++){
-    if(tabDiv.getElementsByTagName("div")[d].getAttribute("pdf")==name){
+  for(var d=0; d <tabDiv.getElementsByTagName("li").length; d++){
+    if(tabDiv.getElementsByTagName("li")[d].getAttribute("pdf")==name){
       return false;
     }
   }
@@ -11,15 +11,12 @@ function checkTabs(name){
 }
 
 function activeTabs(name){
-  var clicked_one=document.querySelector('div[pdf="'+name+'"]')
-  var contenedor=document.getElementById("tabs").getElementsByTagName("div");
+  var contenedor=document.getElementById("tabs").getElementsByTagName("li");
   for(var d=0;d<contenedor.length;d++){
-    if(clicked_one!=contenedor[d]){
+    if(name!=contenedor[d]){
       contenedor[d].setAttribute("class","");
-      contenedor[d].style="display:inline;font-weight:normal;"
-    } else{
+    } else {
       contenedor[d].setAttribute("class","active");
-      contenedor[d].style="display:inline;font-weight:bold;"
     }
   }
 }
@@ -27,7 +24,7 @@ function activeTabs(name){
 function hideExcept(name,appData){
   var contenedor=document.getElementsByClassName("col-sm-8")[0].getElementsByTagName("webview");
   for(var w=0;w<contenedor.length;w++){
-    if(contenedor[w].getAttribute("pdf")!=name){
+    if(contenedor[w].getAttribute("pdf")!=name.getAttribute("pdf")){
       contenedor[w].style.display="none";
     } else {
       contenedor[w].style.display="";
@@ -58,18 +55,15 @@ exports.addTab = function(appData,name){
     document.getElementsByClassName("col-sm-8")[0].appendChild(webView);
 
 
-    var divTab = document.createElement("div");
-    divTab.textContent="   "+name+"   ";
-    divTab.style="display:inline;"
+    var divTab = document.createElement("li");
+    divTab.innerHTML="<a href='#'>"+name+"</a>";
     divTab.setAttribute("pdf",name);
     divTab.onclick=function(){
-      hideExcept(this.getAttribute("pdf"),appData);
+      hideExcept(this,appData);
     }
     document.getElementById("tabs").appendChild(divTab);
-    hideExcept(name,appData);
-  } else {
-    hideExcept(name,appData);
   }
+  hideExcept(document.querySelector('li[pdf="'+name+'"]'),appData);
 }
 window.addEventListener('resize', function(event) {
   var contenedor=document.getElementsByClassName("col-sm-8")[0].getElementsByTagName("webview");

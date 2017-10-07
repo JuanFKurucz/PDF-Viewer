@@ -1,0 +1,11 @@
+body {
+  overflow-y: hidden;
+}
+
+nav {
+	-webkit-app-region: drag;
+}
+
+a{
+  -webkit-app-region: no-drag;
+}
