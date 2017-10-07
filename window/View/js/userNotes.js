@@ -32,14 +32,9 @@ function writeSummary(path,content){
         cargar_resumen(path.replace("_Summary",""));
       });
     });
-  } else {
-    //writeToFile(path+'.json',JSON.stringify(diccionario));
   }
 }
 
-exports.userNotes = (appData,name)=>{
-  writeSummary(appData+name+'_Summary', document.getElementById('userNotes').value);
-}
 
 function cargar_resumen(path){
   console.log(path+'_Summary.json')
@@ -55,6 +50,11 @@ function cargar_resumen(path){
       })
     }
   })
+}
+
+
+exports.userNotes = (appData,name)=>{
+  writeSummary(appData+name+'_Summary', document.getElementById('userNotes').value);
 }
 
 exports.cargarResumen = function(path){
