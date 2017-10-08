@@ -14,7 +14,7 @@ a{
   color:white;
 }
 .backgroundBlack{
-  background-color: black; 
+  background-color: black;
 }
 .marginTop1{
   margin-top: 1em;
@@ -22,4 +22,14 @@ a{
 
 .fontPdfList{
   font-size:21px;
+}
+#tabs{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+#tabs li{
+  margin-left:15px;
+  float: left;
 }
