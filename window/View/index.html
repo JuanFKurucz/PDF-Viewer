@@ -22,15 +22,17 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-4">
-          <button class="btn btn-info marginTop1">Add new</button>
+          <!-- <button id="addNewPdf" class="btn btn-info marginTop1">Add new</button> -->
           <h4 class="marginTop1">Your PDFs:</h4>
           <ul class="marginTop1 fontPdfList" id="pdfList">
+            <li><button id="addNewPdf" class="btn btn-info">Add new</button></li>
           </ul>
           <div style="display:none" class="form-group" id="resumenArea">
             <div id="notes"></div>
             <label for="Notes"><small>Your notes: </small></label>
             <textarea class="form-control" id="userNotes" rows="2" cols="30"></textarea>
             <button type="button" name="button" class="btn btn-success marginTop1" pdfActive="" id="saveUserNotes">Save</button>
+            <button type="button" name="button" class="btn btn-primary marginTop1" pdfActive="" id="exportUserNotes">Export Notes</button>
           </div>
         </div>
         <div class="col-sm-8">

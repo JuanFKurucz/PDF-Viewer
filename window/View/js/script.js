@@ -1,6 +1,8 @@
 const {ipcRenderer} = require('electron');
 const {addNewPdfItem} = require(__dirname+"/js/menu.js");
 const {userNotes} = require(`${__dirname}/js/userNotes.js`);
+const addNewPdf = require(`${__dirname}/js/addNewPdf.js`);
+const exportJsonSummary = require(`${__dirname}/js/exportJsonSummary.js`);
 const jQuery = require('jQuery');
 const Popper = require('popper.js');
 require('bootstrap');
