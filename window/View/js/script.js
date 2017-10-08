@@ -15,7 +15,7 @@ function init(){
   ipcRenderer.send('loaded')
   ipcRenderer.on('addPdfItems', (event, list) => {
     for(element in list){
-      addNewPdfItem(appData,list[element]);
+      addNewPdfItem(appData,list[element].substring(0,list[element].length-4));
     }
   })
   document.getElementById('saveUserNotes').onclick= function(){

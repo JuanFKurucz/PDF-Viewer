@@ -41,32 +41,28 @@ exports.addTab = function(appData,name){
   }
   if(checkTabs(name) == true){
     var webView = document.createElement("webview");
-    webView.src=appData+name;
-
-    var newName=name.substring(0,name.length-4);
-
+    webView.src=appData+name+".pdf";
     webView.setAttribute("plugins","true");
-    webView.setAttribute("pdf",newName);
+    webView.setAttribute("pdf",name);
     webView.setAttribute("preload","js/webview/script.js");
     webView.addEventListener("ipc-message", function (e) {
       if (webView.style.display!="none" && e.channel === "window-data") {
         saveInformation(e.args[0]);
       }
-      cargarResumen(appData+newName);
+      cargarResumen(appData+name);
     })
     webView.style.height=window.innerHeight+"px";
     document.getElementsByClassName("col-sm-8")[0].appendChild(webView);
 
-
     var divTab = document.createElement("li");
-    divTab.innerHTML="<a href='#'>"+newName+"</a>";
-    divTab.setAttribute("pdf",newName);
+    divTab.innerHTML="<a href='#'>"+name+"</a>";
+    divTab.setAttribute("pdf",name);
     divTab.onclick=function(){
       hideExcept(this,appData);
     }
     document.getElementById("tabs").appendChild(divTab);
   }
-  hideExcept(document.querySelector('li[pdf="'+newName+'"]'),appData);
+  hideExcept(document.querySelector('li[pdf="'+name+'"]'),appData);
 }
 window.addEventListener('resize', function(event) {
   var contenedor=document.getElementsByClassName("col-sm-8")[0].getElementsByTagName("webview");
