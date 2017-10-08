@@ -13,8 +13,11 @@
     "electron": "^1.7.8"
   },
   "dependencies": {
+    "bootstrap": "^4.0.0-beta",
     "electron": "^1.7.8",
     "fs": "0.0.1-security",
-    "pdf2json": "^1.1.7"
+    "jquery": "^3.2.1",
+    "pdf2json": "^1.1.7",
+    "popper.js": "^1.12.5"
   }
 }

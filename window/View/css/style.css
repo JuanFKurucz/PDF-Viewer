@@ -9,3 +9,17 @@ nav {
 a{
   -webkit-app-region: no-drag;
 }
+
+.white{
+  color:white;
+}
+.backgroundBlack{
+  background-color: black; 
+}
+.marginTop1{
+  margin-top: 1em;
+}
+
+.fontPdfList{
+  font-size:21px;
+}

@@ -3,17 +3,16 @@
   <head>
     <title>PDF Viewer</title>
     <script src="js/script.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
   </head>
   <body onload="init()">
-    <header style="background-color: #000;">
+    <header class="backgroundBlack">
       <nav class="navbar navbar-inverse">
         <div class="container-fluid">
           <div class="navbar-header">
-            <a class="navbar-brand" href="#">PDF Viewer</a>
+            <a class="navbar-brand white" href="#">PDF Viewer</a>
           </div>
           <ul id="tabs" class="nav navbar-nav">
           </ul>
@@ -23,13 +22,15 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-4">
-          <ul style="font-size:21px;" id="pdfList">
+          <button class="btn btn-info marginTop1">Add new</button>
+          <h4 class="marginTop1">Your PDFs:</h4>
+          <ul class="marginTop1 fontPdfList" id="pdfList">
           </ul>
           <div style="display:none" class="form-group" id="resumenArea">
             <div id="notes"></div>
             <label for="Notes"><small>Your notes: </small></label>
             <textarea class="form-control" id="userNotes" rows="2" cols="30"></textarea>
-            <button type="button" name="button" class="btn btn-success" pdfActive="" id="saveUserNotes">Save</button>
+            <button type="button" name="button" class="btn btn-success marginTop1" pdfActive="" id="saveUserNotes">Save</button>
           </div>
         </div>
         <div class="col-sm-8">
