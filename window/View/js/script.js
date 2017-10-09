@@ -23,6 +23,10 @@ function init(){
     userNotes(appData,this.getAttribute("pdfActive"));
     document.getElementById("notes").value="";
   }
+
+  /**
+   * Los siguientes son eventos que esperan la accion del usuario con el input de busqueda de pdfs.
+  */
   document.querySelector("#search").onchange=function(){
     searchPDF(this.value);
   }
@@ -32,5 +36,7 @@ function init(){
   document.querySelector("#search").onkeyup=function(){
     searchPDF(this.value);
   }
+
+
   ipcRenderer.send('askPdfList')
 }

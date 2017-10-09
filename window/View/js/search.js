@@ -1,4 +1,6 @@
-
+/**
+ * Muestra elementos que contienen el valor del parametro "name" y oculta los que no.
+*/
 exports.searchPDF=function(name){
   var contenedor=document.getElementById("pdfList").getElementsByTagName("li");
   if(name==""){
