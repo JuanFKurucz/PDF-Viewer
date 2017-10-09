@@ -23,13 +23,41 @@ a{
 .fontPdfList{
   font-size:21px;
 }
-#tabs{
+.navul{
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
+  color:white;
 }
-#tabs li{
+.navul li{
   margin-left:15px;
   float: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#pdfList{
+  margin-left:-40px;
+  height:250px;
+  width:300px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+#pdfList li{
+  white-space: nowrap;
+  overflow: hidden;
+  width:300px;
+  text-overflow: ellipsis;
+}
+
+.navul a{
+  text-decoration:none;
+  color:white;
+  opacity: 0.8;
+}
+
+.tabsdiv{
+  width:55%;
+  white-space: nowrap;
 }

@@ -34,6 +34,14 @@ function hideExcept(name,appData){
   activeTabs(name);
 }
 
+function resizeTabs(){
+  var tabDiv = document.getElementById("tabs");
+  for(var d=0; d <tabDiv.getElementsByTagName("li").length; d++){
+    tabDiv.getElementsByTagName("li")[d].style.width=(100/tabDiv.getElementsByTagName("li").length)+"%";
+  }
+}
+
+
 exports.addTab = function(appData,name){
   ipcRenderer.send('exportPDFtoJSON',appData+name);
   if(document.getElementById("resumenArea").style.display=="none"){
@@ -57,10 +65,12 @@ exports.addTab = function(appData,name){
     var divTab = document.createElement("li");
     divTab.innerHTML="<a href='#'>"+name+"</a>";
     divTab.setAttribute("pdf",name);
+    divTab.setAttribute("title",name);
     divTab.onclick=function(){
       hideExcept(this,appData);
     }
     document.getElementById("tabs").appendChild(divTab);
+    resizeTabs();
   }
   hideExcept(document.querySelector('li[pdf="'+name+'"]'),appData);
 }

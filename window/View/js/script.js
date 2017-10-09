@@ -24,5 +24,12 @@ function init(){
     document.getElementById("notes").value="";
   }
 
+  document.getElementById('task').getElementsByTagName("li")[0].onclick= function(){
+    ipcRenderer.send('taskBar',"minimizar")
+  }
+  document.getElementById('task').getElementsByTagName("li")[2].onclick= function(){
+    ipcRenderer.send('taskBar',"cerrar");
+  }
+
   ipcRenderer.send('askPdfList')
 }

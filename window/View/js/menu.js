@@ -3,6 +3,7 @@ const {addTab} = require(__dirname+"/tabs.js");
 exports.addNewPdfItem = function(appData,name){
   var newLi = document.createElement("li");
   newLi.textContent=name;
+  newLi.setAttribute("title",name);
   newLi.onclick=function(){
     addTab(appData,name);
   }

@@ -9,5 +9,5 @@ exports.init = (path) => {
   mainWindow.on("close", () => {
     mainWindow=null;
   })
-  events.init(path);
+  events.init(path,mainWindow);
 }
