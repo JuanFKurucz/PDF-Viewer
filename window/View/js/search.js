@@ -1,7 +1,8 @@
+let $ = require('jQuery');
 /**
  * Muestra elementos que contienen el valor del parametro "name" y oculta los que no.
 */
-exports.searchPDF=function(name){
+var searchPDF=function(name){
   var contenedor=document.getElementById("pdfList").getElementsByTagName("li");
   if(name==""){
     for(var i=0;i<contenedor.length;i++){
@@ -17,3 +18,18 @@ exports.searchPDF=function(name){
     }
   }
 }
+
+/**
+ * Los siguientes son eventos que esperan la accion del usuario con el input de busqueda de pdfs.
+*/
+$(document).ready(()=>{
+  $('#search').change(()=>{
+    searchPDF($('#search').val());
+  });
+  $('#search').keydown(()=>{
+    searchPDF($('#search').val());
+  });
+  $('#search').keyup(()=>{
+    searchPDF($('#search').val());
+  });
+});
