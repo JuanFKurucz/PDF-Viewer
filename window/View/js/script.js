@@ -3,6 +3,7 @@ const {addNewPdfItem} = require(__dirname+"/js/menu.js");
 const {userNotes} = require(`${__dirname}/js/userNotes.js`);
 const addNewPdf = require(`${__dirname}/js/addNewPdf.js`);
 const exportJsonSummary = require(`${__dirname}/js/exportJsonSummary.js`);
+const {searchPDF} = require(`${__dirname}/js/search.js`);
 const jQuery = require('jQuery');
 const Popper = require('popper.js');
 require('bootstrap');
@@ -22,6 +23,14 @@ function init(){
     userNotes(appData,this.getAttribute("pdfActive"));
     document.getElementById("notes").value="";
   }
-
+  document.querySelector("#search").onchange=function(){
+    searchPDF(this.value);
+  }
+  document.querySelector("#search").onkeydown=function(){
+    searchPDF(this.value);
+  }
+  document.querySelector("#search").onkeyup=function(){
+    searchPDF(this.value);
+  }
   ipcRenderer.send('askPdfList')
 }
