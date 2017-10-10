@@ -24,7 +24,7 @@ function writeSummary(path,content){
   if(content!=''){
     getNumberPages(path.replace("_Summary",""),function(e,numeroTotalPaginas){
       loadSummary(path+'.json',function(e,data){
-        console.log(path);
+        //console.log(path);
         diccionario = data;
         var paginaActual=parseInt(information.documentCurrentHeight/(information.documenttotalHeight/numeroTotalPaginas))
         diccionario[paginaActual]=content;
@@ -37,7 +37,7 @@ function writeSummary(path,content){
 
 
 function cargar_resumen(path){
-  console.log(path+'_Summary.json')
+  //console.log(path+'_Summary.json')
   fs.readFile(path+'_Summary.json',(err,data)=>{
     if (err) {
       writeSummary(path,'');
@@ -54,7 +54,7 @@ function cargar_resumen(path){
 
 
 exports.userNotes = (appData,name)=>{
-  writeSummary(appData+name+'_Summary', document.getElementById('userNotes').value);
+  writeSummary(appData+name+'_Summary', document.getElementById('userNotes').value.replace(/\n/g, "[br]"));
 }
 
 exports.cargarResumen = function(path){
