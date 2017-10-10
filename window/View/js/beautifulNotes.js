@@ -1,15 +1,7 @@
-function parseBBCODE(text){
-  var newtext=text;
-  if(text!=undefined){
-    newtext=newtext.replace(/\[br\]/g, "<br />");
-  }
-  return newtext;
-}
-
+const {decode} = require(__dirname+"/BBCode.js");
 
 exports.beautifulNotes = function(textOfNote){
   borderColors= ['primary','secondary','success','danger','warning','info','dark']
   randomColor= borderColors[Math.floor(Math.random()*borderColors.length)];
-  var text=parseBBCODE(textOfNote);
-  return `<div class="alert alert-${randomColor}"><p>${text}</p></div>`;
+  return `<div class="alert alert-${randomColor}"><p>${decode(textOfNote)}</p></div>`;
 }

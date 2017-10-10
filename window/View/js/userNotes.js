@@ -1,6 +1,7 @@
 var fs = require('fs');
 const {beautifulNotes} = require(__dirname+"/beautifulNotes.js");
 const {getNumberPages} = require(__dirname+"/readPDF.js");
+const {encode} = require(__dirname+"/BBCode.js");
 var information={'documenttotalHeight': 1, 'documentCurrentHeight':0 }
 
 function writeToFile(path,text){
@@ -54,7 +55,7 @@ function cargar_resumen(path){
 
 
 exports.userNotes = (appData,name)=>{
-  writeSummary(appData+name+'_Summary', document.getElementById('userNotes').value.replace(/\n/g, "[br]"));
+  writeSummary(appData+name+'_Summary', encode(document.getElementById('userNotes').value));
 }
 
 exports.cargarResumen = function(path){
