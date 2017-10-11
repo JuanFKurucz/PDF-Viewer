@@ -20,6 +20,13 @@ function Decode(text){
   //Subrayado: [u]text[/u]
   t=t.replace(/\[u\]/g, "<u>");
   t=t.replace(/\[\/u\]/g, "</u>");
+
+  //Subrayado: [strike]text[/strike]
+  t=t.replace(/\[strike\]/g, "<strike>");
+  t=t.replace(/\[\/strike\]/g, "</strike>");
+
+  //Subrayado: [hr]
+  t=t.replace(/\[hr\]/g, "<hr/>");
   return t;
 }
 

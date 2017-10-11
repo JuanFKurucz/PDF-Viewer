@@ -36,14 +36,11 @@ $(document).ready(()=>{
   $("#saveUserNotes").click(()=>{
     userNotes(appData,$("#saveUserNotes").attr("pdfActive"));
   });
-
-  $("#BBcode_negrita").click(()=>{
-    writeAndMove("[b][/b]");
-  });
-  $("#BBcode_curisva").click(()=>{
-    writeAndMove("[i][/i]");
-  });
-  $("#BBcode_subrayado").click(()=>{
-    writeAndMove("[u][/u]");
-  });
+  
+  var bbCode_buttons=document.querySelectorAll("#bbCodeButtons div");
+  for(var div in bbCode_buttons){
+    bbCode_buttons[div].onclick=function(){
+      writeAndMove(this.getAttribute("bbcode"));
+    }
+  }
 })
