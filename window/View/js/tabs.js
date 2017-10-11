@@ -10,6 +10,9 @@ function checkTabs(name){
   return true;
 }
 
+let $ = require('jquery');
+
+
 function activeTabs(name){
   var contenedor=document.getElementById("tabs").getElementsByTagName("li");
   for(var d=0;d<contenedor.length;d++){
@@ -41,12 +44,20 @@ function resizeTabs(){
   }
 }
 
+function reizeNotes(){
+  document.getElementById("notes").style.maxHeight=parseInt(document.getElementById("resumenForm").offsetTop-document.getElementById("notes").offsetTop-50)+"px";
+}
+
+$("#userNotes").bind('mouseup', function(){reizeNotes()});
+$("#userNotes").bind('mousedown', reizeNotes);
+$("#userNotes").bind('click', reizeNotes);
 
 exports.addTab = function(appData,name){
   ipcRenderer.send('exportPDFtoJSON',appData+name);
   if(document.getElementById("resumenArea").style.display=="none"){
     document.getElementById("resumenArea").style.display="";
   }
+  reizeNotes();
   if(checkTabs(name) == true){
     var webView = document.createElement("webview");
     webView.src=appData+name+".pdf";
@@ -79,4 +90,5 @@ window.addEventListener('resize', function(event) {
   for(var w=0;w<contenedor.length;w++){
     contenedor[w].style.height=window.innerHeight+"px";
   }
+  reizeNotes();
 });

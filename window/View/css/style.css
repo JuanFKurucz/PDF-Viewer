@@ -39,8 +39,8 @@ a{
 }
 #pdfList{
   margin-left:-40px;
-  height:250px;
-  width:300px;
+  height:200px;
+  width:130%;
   overflow-y: scroll;
   overflow-x: hidden;
 }
@@ -70,4 +70,8 @@ a{
   padding-left:5px;
   padding-right:5px;
   cursor:pointer;
+}
+
+#notes{
+  overflow-y: scroll;
 }
