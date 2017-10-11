@@ -10,8 +10,6 @@ function checkTabs(name){
   return true;
 }
 
-let $ = require('jquery');
-
 
 function activeTabs(name){
   var contenedor=document.getElementById("tabs").getElementsByTagName("li");
@@ -47,10 +45,6 @@ function resizeTabs(){
 function reizeNotes(){
   document.getElementById("notes").style.maxHeight=parseInt(document.getElementById("resumenForm").offsetTop-document.getElementById("notes").offsetTop-50)+"px";
 }
-
-$("#userNotes").bind('mouseup', function(){reizeNotes()});
-$("#userNotes").bind('mousedown', reizeNotes);
-$("#userNotes").bind('click', reizeNotes);
 
 exports.addTab = function(appData,name){
   ipcRenderer.send('exportPDFtoJSON',appData+name);
