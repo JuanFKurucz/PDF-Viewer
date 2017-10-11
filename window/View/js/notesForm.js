@@ -1,5 +1,5 @@
 let $ = require('jquery');
-
+const {userNotes} = require(`${__dirname}/userNotes.js`);
 /**
   https://stackoverflow.com/a/499158
 **/
