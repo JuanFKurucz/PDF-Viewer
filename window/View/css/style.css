@@ -61,3 +61,13 @@ a{
   width:55%;
   white-space: nowrap;
 }
+
+#bbCodeButtons div{
+  display:inline;
+  border-color: black;
+  border-style: dashed;
+  border-width: 1px;
+  padding-left:5px;
+  padding-right:5px;
+  cursor:pointer;
+}

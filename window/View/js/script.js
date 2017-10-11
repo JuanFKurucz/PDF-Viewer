@@ -4,6 +4,7 @@ const {userNotes} = require(`${__dirname}/js/userNotes.js`);
 const addNewPdf = require(`${__dirname}/js/addNewPdf.js`);
 const exportJsonSummary = require(`${__dirname}/js/exportJsonSummary.js`);
 const searchPDF = require(`${__dirname}/js/search.js`);
+const notesForm = require(`${__dirname}/js/notesForm.js`);
 const jQuery = require('jQuery');
 const Popper = require('popper.js');
 require('bootstrap');
@@ -19,10 +20,6 @@ function init(){
       addNewPdfItem(appData,list[element].substring(0,list[element].length-4));
     }
   })
-  document.getElementById('saveUserNotes').onclick= function(){
-    userNotes(appData,this.getAttribute("pdfActive"));
-    document.getElementById("notes").value="";
-  }
 
   document.getElementById('task').getElementsByTagName("li")[0].onclick= function(){
     ipcRenderer.send('taskBar',"minimizar")
