@@ -1,13 +1,23 @@
+var appData;
 const {ipcRenderer} = require('electron');
 const {addNewPdfItem} = require(__dirname+"/js/menu.js");
-const addNewPdf = require(`${__dirname}/js/addNewPdf.js`);
+
+require(`${__dirname}/js/addNewPdf.js`);
+require(`${__dirname}/js/exportJsonSummary.js`);
+require(`${__dirname}/js/search.js`);
+require(`${__dirname}/js/notesForm.js`);
+require('jQuery');
+require('popper.js');
+require('bootstrap');
+
+/*const addNewPdf = require(`${__dirname}/js/addNewPdf.js`);
 const exportJsonSummary = require(`${__dirname}/js/exportJsonSummary.js`);
 const searchPDF = require(`${__dirname}/js/search.js`);
 const notesForm = require(`${__dirname}/js/notesForm.js`);
 const jQuery = require('jQuery');
 const Popper = require('popper.js');
 require('bootstrap');
-var appData;
+*/
 
 function init(){
   ipcRenderer.on('path', (event, arg) => {
