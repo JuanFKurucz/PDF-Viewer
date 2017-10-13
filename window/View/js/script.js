@@ -19,6 +19,7 @@ function init(){
   })
   ipcRenderer.send('loaded')
   ipcRenderer.on('addPdfItems', (event, list) => {
+    document.getElementById("pdfList").innerHTML="";
     for(element in list){
       addNewPdfItem(appData,list[element].substring(0,list[element].length-4));
     }
