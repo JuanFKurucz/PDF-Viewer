@@ -37,18 +37,21 @@
           <ul class="marginTop1 fontPdfList" id="pdfList"></ul>
 
           <div style="display:none" class="form-group" id="resumenArea">
-            <div id="notes"></div>
+            <div id="bbCodeButtons" class="marginBottom1">
+              <div bbcode="[b][/b]"><b>B</b></div>
+              <div bbcode="[i][/i]"><i>I</i></div>
+              <div bbcode="[u][/u]"><u>U</u></div>
+              <div bbcode="[strike][/strike]"><strike>S</strike></div>
+              <div bbcode="[hr]">hr</div>
+            </div>
+            <div id="notes">
+                Your notes here
+            </div>
             <div id="resumenForm" style="position:fixed;bottom:1em;width:30%;">
-              <label for="Notes"><small>Your notes: </small></label>
+              <!--<label for="Notes"><small>Your notes: </small></label>-->
 
-              <div id="bbCodeButtons" class="marginBottom1">
-                <div bbcode="[b][/b]"><b>B</b></div>
-                <div bbcode="[i][/i]"><i>I</i></div>
-                <div bbcode="[u][/u]"><u>U</u></div>
-                <div bbcode="[strike][/strike]"><strike>S</strike></div>
-                <div bbcode="[hr]">hr</div>
-              </div>
-              <textarea class="form-control" id="userNotes" rows="2" cols="30" class="marginTop1"></textarea>
+
+              <textarea class="form-control" style="width:1px;height:1px;top:-100px;position:fixed;" id="userNotes" rows="2" cols="30" class="marginTop1"></textarea>
 
               <button type="button" name="button" class="btn btn-success marginTop1" pdfActive="" id="saveUserNotes">Save</button>
               <button type="button" name="button" class="btn btn-primary marginTop1" pdfActive="" id="exportUserNotes">Export Notes</button>

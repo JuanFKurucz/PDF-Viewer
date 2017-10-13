@@ -77,3 +77,7 @@ a{
 #notes{
   overflow-y: scroll;
 }
+#userNotes{
+  position:relative;
+  top:0px;
+}

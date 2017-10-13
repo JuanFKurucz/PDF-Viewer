@@ -1,5 +1,6 @@
 let $ = require('jquery');
 const {userNotes} = require(`${__dirname}/userNotes.js`);
+const {decode} = require(`${__dirname}/BBCode.js`);
 /**
   https://stackoverflow.com/a/499158
 **/
@@ -25,6 +26,7 @@ function setCaretToPos (input, pos) {
   End of stackoverflow
 **/
 
+
 function writeAndMove(bbcode){
   var cursorPosition = $('#userNotes').prop("selectionStart");
   var Alength=$("#userNotes").get(0).value.length;
@@ -36,7 +38,13 @@ $(document).ready(()=>{
   $("#saveUserNotes").click(()=>{
     userNotes(appData,$("#saveUserNotes").attr("pdfActive"));
   });
-  
+
+  $("#userNotes").keyup((event)=>{
+    document.getElementById("notes").innerHTML=decode(document.getElementById("userNotes").value);
+  });
+  $("#notes").click(function() {
+    $("#userNotes").focus();
+  });
   var bbCode_buttons=document.querySelectorAll("#bbCodeButtons div");
   for(var div in bbCode_buttons){
     bbCode_buttons[div].onclick=function(){
