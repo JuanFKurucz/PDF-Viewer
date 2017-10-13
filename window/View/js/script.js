@@ -8,8 +8,8 @@ const notesForm = require(`${__dirname}/js/notesForm.js`);
 const jQuery = require('jQuery');
 const Popper = require('popper.js');
 require('bootstrap');
+let $ = require('jQuery');
 
-let $ = require('jquery');
 function reizeNotes(){
   document.getElementById("notes").style.maxHeight=parseInt(document.getElementById("resumenForm").offsetTop-document.getElementById("notes").offsetTop-50)+"px";
 }

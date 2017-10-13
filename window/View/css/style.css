@@ -19,7 +19,9 @@ a{
 .marginTop1{
   margin-top: 1em;
 }
-
+.marginBottom1{
+  margin-bottom: 1em;
+}
 .fontPdfList{
   font-size:21px;
 }

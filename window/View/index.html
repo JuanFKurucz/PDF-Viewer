@@ -27,29 +27,28 @@
     </header>
     <div class="container-fluid">
       <div class="row">
-        <div class="col-sm-4">
-          <!-- <button id="addNewPdf" class="btn btn-info marginTop1">Add new</button> -->
-          <h4 style="margin:15px;display:inline" class="marginTop1">Your PDFs:</h4><button id="addNewPdf" class="btn btn-info">Add new</button>
+        <div class="col-sm-4 marginTop1">
+          <h4 style="margin:15px;display:inline">Your PDFs:</h4><button id="addNewPdf" class="btn btn-info">Add new</button>
 
 					  <div class="form-group">
-						        <input type="text" class="form-control" id="search" placeholder="Search for your pdf">
+						        <input type="text" class="form-control marginTop1" id="search" placeholder="Search for your pdf">
 					  </div>
 
           <ul class="marginTop1 fontPdfList" id="pdfList"></ul>
 
           <div style="display:none" class="form-group" id="resumenArea">
             <div id="notes"></div>
-            <div id="resumenForm" style="position:fixed;bottom:0px;width:30%;">
+            <div id="resumenForm" style="position:fixed;bottom:1em;width:30%;">
               <label for="Notes"><small>Your notes: </small></label>
 
-              <div id="bbCodeButtons">
+              <div id="bbCodeButtons" class="marginBottom1">
                 <div bbcode="[b][/b]"><b>B</b></div>
                 <div bbcode="[i][/i]"><i>I</i></div>
                 <div bbcode="[u][/u]"><u>U</u></div>
                 <div bbcode="[strike][/strike]"><strike>S</strike></div>
                 <div bbcode="[hr]">hr</div>
               </div>
-              <textarea class="form-control" id="userNotes" rows="2" cols="30"></textarea>
+              <textarea class="form-control" id="userNotes" rows="2" cols="30" class="marginTop1"></textarea>
 
               <button type="button" name="button" class="btn btn-success marginTop1" pdfActive="" id="saveUserNotes">Save</button>
               <button type="button" name="button" class="btn btn-primary marginTop1" pdfActive="" id="exportUserNotes">Export Notes</button>
