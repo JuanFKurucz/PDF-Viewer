@@ -13,7 +13,7 @@ function writeToFile(path,text){
 function loadSummary(path,callback){
   var ndata={};
   fs.readFile(path,(err,data)=>{
-    if(err) {}else{
+    if(!err) {
       ndata=JSON.parse(data);
     }
     callback(null,ndata)

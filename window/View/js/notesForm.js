@@ -27,7 +27,6 @@ function setCaretToPos (input, pos) {
 
 function writeAndMove(bbcode){
   var cursorPosition = $('#userNotes').prop("selectionStart");
-  var Alength=$("#userNotes").get(0).value.length;
   $("#userNotes").val($("#userNotes").val().substr(0,cursorPosition) + bbcode + $("#userNotes").val().substr(cursorPosition,$("#userNotes").val().length));
   setCaretToPos(document.getElementById("userNotes"),cursorPosition+bbcode.indexOf("]")+1);
 }
@@ -36,7 +35,7 @@ $(document).ready(()=>{
   $("#saveUserNotes").click(()=>{
     userNotes(appData,$("#saveUserNotes").attr("pdfActive"));
   });
-  
+
   var bbCode_buttons=document.querySelectorAll("#bbCodeButtons div");
   for(var div in bbCode_buttons){
     bbCode_buttons[div].onclick=function(){
